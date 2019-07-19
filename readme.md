@@ -18,13 +18,6 @@ This package can be used with admin-lte template
 ### Publish views and lang files
     php artisan vendor:publish --provider="Pilabrem\LaravelPermissionUI\LaravelPermissionUiServiceProvider"
 
-### Seed Default datas with super-admin
-    php artisan db:seed --class=Pilabrem\\LaravelPermissionUI\\database\\seeds\\DatabaseSeeder
-
-#### Super admin credentials
-- Email: admin@admin.com
-- Password: password
-
 ### Edit App\User model and add
     <?php
 
@@ -41,3 +34,9 @@ This package can be used with admin-lte template
         ...
     }
 
+### Seed Default datas with super-admin
+    php artisan db:seed --class=Pilabrem\\LaravelPermissionUI\\database\\seeds\\DatabaseSeeder
+
+#### Super admin credentials
+- Email: admin@admin.com
+- Password: password
