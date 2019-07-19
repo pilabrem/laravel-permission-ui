@@ -14,7 +14,7 @@ Route::group(['middleware' => ['web', 'auth'], 'prefix' => 'admin', 'namespace' 
 });
 
 // Change Password Routes...
-Route::group(['namespace' => 'Pilabrem\LaravelPermissionUI\Http\Controllers'], function () {
+Route::group(['middleware' => ['web'], 'namespace' => 'Pilabrem\LaravelPermissionUI\Http\Controllers'], function () {
     Route::get('change_password', 'Auth\ChangePasswordController@showChangePasswordForm')->name('auth.change_password');
     Route::patch('change_password', 'Auth\ChangePasswordController@changePassword')->name('auth.change_password');
 });

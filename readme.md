@@ -40,3 +40,6 @@ This package can be used with admin-lte template
 #### Super admin credentials
 - Email: admin@admin.com
 - Password: password
+
+### Include permissions Menu item (li of first level ul) in your menu side bar
+    @include('admin.menu')
