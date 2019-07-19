@@ -21,3 +21,20 @@
 #### Super admin credentials
 - Email: admin@admin.com
 - Password: password
+
+### Edit App\User model and add
+    <?php
+
+    namespace App;
+
+    use Illuminate\Notifications\Notifiable;
+    use Spatie\Permission\Traits\HasRoles;      // New line usage
+
+    class User extends Authenticatable
+    {
+        use Notifiable;
+        use HasRoles;          // New line
+
+        ...
+    }
+
