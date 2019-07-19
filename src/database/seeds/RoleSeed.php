@@ -22,20 +22,5 @@ class RoleSeed extends Seeder
         $role = Role::create(['name' => 'admin']);
         $role->givePermissionTo(Permission::all());
         $role->revokePermissionTo('gerer administrateurs');
-
-        // Vérification
-        $role = Role::create(['name' => 'verification']);
-        $role->givePermissionTo('afficher donnees');
-        $role->givePermissionTo('verifier demandes');
-
-        // Analyse
-        $role = Role::create(['name' => 'analyse']);
-        $role->givePermissionTo('afficher donnees');
-        $role->givePermissionTo('analyser demandes');
-
-        // Validation
-        $role = Role::create(['name' => 'validation']);
-        $role->givePermissionTo('afficher donnees');
-        $role->givePermissionTo('valider demandes');
     }
 }

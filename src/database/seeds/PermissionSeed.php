@@ -20,10 +20,6 @@ class PermissionSeed extends Seeder
         Permission::create(['name' => 'gerer utilisateurs']);
         Permission::create(['name' => 'gerer administrateurs']);
 
-        Permission::create(['name' => 'verifier demandes']);
-        Permission::create(['name' => 'analyser demandes']);
-        Permission::create(['name' => 'valider demandes']);
-
         Permission::create(['name' => 'afficher donnees']);
         Permission::create(['name' => 'modifier donnees']);
         Permission::create(['name' => 'supprimer donnees']);
