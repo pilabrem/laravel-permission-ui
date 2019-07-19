@@ -1,3 +1,6 @@
+# Laravel permission ui
+This package can be used with admin-lte template
+
 ## installation
     composer require pilabrem/laravel-permission-ui
 

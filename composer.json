@@ -17,5 +17,12 @@
         "psr-4": {
             "Pilabrem\\LaravelPermissionUI\\": "src/"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Pilabrem\\LaravelPermissionUI\\LaravelPermissionUiServiceProvider"
+            ]
+        }
     }
 }
