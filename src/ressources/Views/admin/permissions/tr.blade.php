@@ -2,6 +2,7 @@
     <td></td>
     <td>{{ $permission->name }}</td>
     <td>
+        @can('gerer administrateurs')
         <a href="{{ route('admin.permissions.edit',[$permission->id]) }}" class="btn btn-xs btn-info">@lang('global.app_edit')</a>
         {!! Form::open(array(
             'style' => 'display: inline-block;',
@@ -10,6 +11,7 @@
             'route' => ['admin.permissions.destroy', $permission->id])) !!}
         {!! Form::submit(trans('global.app_delete'), array('class' => 'btn btn-xs btn-danger')) !!}
         {!! Form::close() !!}
+        @endcan
     </td>
 
 </tr>

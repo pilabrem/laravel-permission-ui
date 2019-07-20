@@ -4,7 +4,9 @@
 @section('content')
     <h3 class="page-title">@lang('global.permissions.title')</h3>
     <p>
+        @can('gerer administrateurs')
         <a href="{{ route('admin.permissions.create') }}" class="btn btn-success">@lang('global.app_add_new')</a>
+        @endcan
     </p>
 
     <div class="panel panel-default">
