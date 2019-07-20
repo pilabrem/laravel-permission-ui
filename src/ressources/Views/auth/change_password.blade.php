@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h3 class="page-title">Change password</h3>
+    <h3 class="page-title">@lang('global.change_password.title')</h3>
 
     @if(session('success'))
         <!-- If password successfully show message -->
@@ -21,7 +21,7 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-xs-12 form-group">
-                        {!! Form::label('current_password', 'Current password*', ['class' => 'control-label']) !!}
+                        {!! Form::label('current_password', trans('global.change_password.current_password'), ['class' => 'control-label']) !!}
                         {!! Form::password('current_password', ['class' => 'form-control', 'placeholder' => '']) !!}
                         <p class="help-block"></p>
                         @if($errors->has('current_password'))
@@ -34,7 +34,7 @@
 
                 <div class="row">
                     <div class="col-xs-12 form-group">
-                        {!! Form::label('new_password', 'New password*', ['class' => 'control-label']) !!}
+                        {!! Form::label('new_password', trans('global.change_password.new_password'), ['class' => 'control-label']) !!}
                         {!! Form::password('new_password', ['class' => 'form-control', 'placeholder' => '']) !!}
                         <p class="help-block"></p>
                         @if($errors->has('new_password'))
@@ -47,7 +47,7 @@
 
                 <div class="row">
                     <div class="col-xs-12 form-group">
-                        {!! Form::label('new_password_confirmation', 'New password confirmation*', ['class' => 'control-label']) !!}
+                        {!! Form::label('new_password_confirmation', trans('global.change_password.new_password_confirmation'), ['class' => 'control-label']) !!}
                         {!! Form::password('new_password_confirmation', ['class' => 'form-control', 'placeholder' => '']) !!}
                         <p class="help-block"></p>
                         @if($errors->has('new_password_confirmation'))
