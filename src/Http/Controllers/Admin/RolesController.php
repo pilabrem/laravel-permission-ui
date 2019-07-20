@@ -38,7 +38,12 @@ class RolesController extends Controller
         if (! Gate::allows('gerer utilisateurs')) {
             return abort(401);
         }
-        $permissions = Permission::where('name', '<>', 'gerer administrateurs')->get()->pluck('name', 'name');
+
+        if (Gate::allows('gerer administrateurs')) {
+            $permissions = Permission::get()->pluck('name', 'name');
+        } else {
+            $permissions = Permission::where('name', '<>', 'gerer administrateurs')->get()->pluck('name', 'name');
+        }
 
         return view('admin.roles.create', compact('permissions'));
     }
@@ -73,7 +78,12 @@ class RolesController extends Controller
         if (! Gate::allows('gerer utilisateurs')) {
             return abort(401);
         }
-        $permissions = Permission::where('name', '<>', 'gerer administrateurs')->get()->pluck('name', 'name');
+
+        if (Gate::allows('gerer administrateurs')) {
+            $permissions = Permission::get()->pluck('name', 'name');
+        } else {
+            $permissions = Permission::where('name', '<>', 'gerer administrateurs')->get()->pluck('name', 'name');
+        }
 
         $role = Role::findOrFail($id);
 

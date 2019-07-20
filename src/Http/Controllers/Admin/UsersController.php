@@ -39,7 +39,12 @@ class UsersController extends Controller
         if (! Gate::allows('gerer utilisateurs')) {
             return abort(401);
         }
-        $roles = Role::where('name', '<>', 'super-admin')->get()->pluck('name', 'name');
+
+        if (Gate::allows('gerer administrateurs')) {
+            $roles = Role::get()->pluck('name', 'name');
+        } else {
+            $roles = Role::where('name', '<>', 'super-admin')->get()->pluck('name', 'name');
+        }
 
         return view('admin.users.create', compact('roles'));
     }
@@ -78,7 +83,12 @@ class UsersController extends Controller
         if (! Gate::allows('gerer utilisateurs')) {
             return abort(401);
         }
-        $roles = Role::where('name', '<>', 'super-admin')->get()->pluck('name', 'name');
+
+        if (Gate::allows('gerer administrateurs')) {
+            $roles = Role::get()->pluck('name', 'name');
+        } else {
+            $roles = Role::where('name', '<>', 'super-admin')->get()->pluck('name', 'name');
+        }
 
         $user = User::findOrFail($id);
 

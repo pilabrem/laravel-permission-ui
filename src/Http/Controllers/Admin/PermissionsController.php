@@ -34,7 +34,7 @@ class PermissionsController extends Controller
      */
     public function create()
     {
-        if (! Gate::allows('gerer utilisateurs')) {
+        if (! Gate::allows('gerer administrateurs')) {
             return abort(401);
         }
         return view('admin.permissions.create');
@@ -48,7 +48,7 @@ class PermissionsController extends Controller
      */
     public function store(StorePermissionsRequest $request)
     {
-        if (! Gate::allows('gerer utilisateurs')) {
+        if (! Gate::allows('gerer administrateurs')) {
             return abort(401);
         }
         Permission::create($request->all());
@@ -65,7 +65,7 @@ class PermissionsController extends Controller
      */
     public function edit($id)
     {
-        if (! Gate::allows('gerer utilisateurs')) {
+        if (! Gate::allows('gerer administrateurs')) {
             return abort(401);
         }
         $permission = Permission::findOrFail($id);
@@ -82,7 +82,7 @@ class PermissionsController extends Controller
      */
     public function update(UpdatePermissionsRequest $request, $id)
     {
-        if (! Gate::allows('gerer utilisateurs')) {
+        if (! Gate::allows('gerer administrateurs')) {
             return abort(401);
         }
         $permission = Permission::findOrFail($id);
@@ -100,7 +100,7 @@ class PermissionsController extends Controller
      */
     public function destroy($id)
     {
-        if (! Gate::allows('gerer utilisateurs')) {
+        if (! Gate::allows('gerer administrateurs')) {
             return abort(401);
         }
         $permission = Permission::findOrFail($id);
@@ -116,7 +116,7 @@ class PermissionsController extends Controller
      */
     public function massDestroy(Request $request)
     {
-        if (! Gate::allows('gerer utilisateurs')) {
+        if (! Gate::allows('gerer administrateurs')) {
             return abort(401);
         }
         if ($request->input('ids')) {
