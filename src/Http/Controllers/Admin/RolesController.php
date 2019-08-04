@@ -19,7 +19,7 @@ class RolesController extends Controller
      */
     public function index()
     {
-        if (! Gate::allows('gerer utilisateurs')) {
+        if (! Gate::allows('manage users')) {
             return abort(401);
         }
 
@@ -35,15 +35,17 @@ class RolesController extends Controller
      */
     public function create()
     {
-        if (! Gate::allows('gerer utilisateurs')) {
+        if (! Gate::allows('manage users')) {
             return abort(401);
         }
 
-        if (Gate::allows('gerer administrateurs')) {
+        if (Gate::allows('manage administrators')) {
             $permissions = Permission::get()->pluck('name', 'name');
         } else {
-            $permissions = Permission::where('name', '<>', 'gerer administrateurs')->get()->pluck('name', 'name');
+            $permissions = Permission::where('name', '<>', 'manage administrators')->get()->pluck('name', 'name');
         }
+
+        $permissions = $this->translateList($permissions);
 
         return view('admin.roles.create', compact('permissions'));
     }
@@ -56,7 +58,7 @@ class RolesController extends Controller
      */
     public function store(StoreRolesRequest $request)
     {
-        if (! Gate::allows('gerer utilisateurs')) {
+        if (! Gate::allows('manage users')) {
             return abort(401);
         }
         $role = Role::create($request->except('permission'));
@@ -75,19 +77,31 @@ class RolesController extends Controller
      */
     public function edit($id)
     {
-        if (! Gate::allows('gerer utilisateurs')) {
+        if (! Gate::allows('manage users')) {
             return abort(401);
         }
 
-        if (Gate::allows('gerer administrateurs')) {
+        if (Gate::allows('manage administrators')) {
             $permissions = Permission::get()->pluck('name', 'name');
         } else {
-            $permissions = Permission::where('name', '<>', 'gerer administrateurs')->get()->pluck('name', 'name');
+            $permissions = Permission::where('name', '<>', 'manage administrators')->get()->pluck('name', 'name');
         }
 
+        $permissions = $this->translateList($permissions);
         $role = Role::findOrFail($id);
 
         return view('admin.roles.edit', compact('role', 'permissions'));
+    }
+
+    /**
+     *  Traduire un tableau simple et la retourner sous forme de clé valeur
+     */
+    private function translateList($lists) {
+        foreach ($lists as $list) {
+            $lists[$list] = __($list);
+        }
+
+        return $lists;
     }
 
     /**
@@ -99,7 +113,7 @@ class RolesController extends Controller
      */
     public function update(UpdateRolesRequest $request, $id)
     {
-        if (! Gate::allows('gerer utilisateurs')) {
+        if (! Gate::allows('manage users')) {
             return abort(401);
         }
         $role = Role::findOrFail($id);
@@ -119,7 +133,7 @@ class RolesController extends Controller
      */
     public function destroy($id)
     {
-        if (! Gate::allows('gerer utilisateurs')) {
+        if (! Gate::allows('manage users')) {
             return abort(401);
         }
         $role = Role::findOrFail($id);
@@ -135,7 +149,7 @@ class RolesController extends Controller
      */
     public function massDestroy(Request $request)
     {
-        if (! Gate::allows('gerer utilisateurs')) {
+        if (! Gate::allows('manage users')) {
             return abort(401);
         }
         if ($request->input('ids')) {

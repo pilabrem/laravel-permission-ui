@@ -17,11 +17,12 @@ class PermissionSeed extends Seeder
         Artisan::call('cache:clear');
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
-        Permission::create(['name' => 'gerer utilisateurs']);
-        Permission::create(['name' => 'gerer administrateurs']);
+        Permission::create(['name' => 'manage users']);
+        Permission::create(['name' => 'manage administrators']);
 
-        Permission::create(['name' => 'afficher donnees']);
-        Permission::create(['name' => 'modifier donnees']);
-        Permission::create(['name' => 'supprimer donnees']);
+        Permission::create(['name' => 'create datas']);
+        Permission::create(['name' => 'display datas']);
+        Permission::create(['name' => 'edit datas']);
+        Permission::create(['name' => 'delete datas']);
     }
 }

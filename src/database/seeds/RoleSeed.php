@@ -21,6 +21,6 @@ class RoleSeed extends Seeder
         // Admin Simple
         $role = Role::create(['name' => 'admin']);
         $role->givePermissionTo(Permission::all());
-        $role->revokePermissionTo('gerer administrateurs');
+        $role->revokePermissionTo('manage administrators');
     }
 }

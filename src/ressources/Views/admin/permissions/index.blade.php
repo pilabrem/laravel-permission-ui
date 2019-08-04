@@ -4,7 +4,7 @@
 @section('content')
     <h3 class="page-title">@lang('global.permissions.title')</h3>
     <p>
-        @can('gerer administrateurs')
+        @can('manage administrators')
         <a href="{{ route('admin.permissions.create') }}" class="btn btn-success">@lang('global.app_add_new')</a>
         @endcan
     </p>
@@ -28,8 +28,8 @@
                 <tbody>
                     @if (count($permissions) > 0)
                         @foreach ($permissions as $permission)
-                            @if($permission->name == 'gerer administrateurs')
-                                @can('gerer administrateurs')
+                            @if($permission->name == 'manage administrators')
+                                @can('manage administrators')
                                     @include('admin.permissions.tr')
                                 @endcan
                             @else

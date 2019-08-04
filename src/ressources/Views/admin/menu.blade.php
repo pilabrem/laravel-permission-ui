@@ -1,6 +1,6 @@
 @inject('request', 'Illuminate\Http\Request')
 
-@can('gerer utilisateurs')
+@can('manage users')
 <li class="treeview {{(Route::is('admin.users.*') || Route::is('admin.roles.*') || Route::is('admin.permissions.*')) ? 'active' : null}}">
     <a href="#">
         <i class="fa fa-users"></i>

@@ -24,7 +24,7 @@ class LaravelPermissionUiServiceProvider extends ServiceProvider
         ], 'views');
 
         $this->publishes([
-            __DIR__.'/ressources/lang/en' => resource_path('lang/en'),
+            __DIR__.'/ressources/lang' => resource_path('lang'),
         ]);
     }
 

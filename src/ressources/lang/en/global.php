@@ -9,14 +9,6 @@ return [
 		],
 	],
 
-	'permissions' => [
-		'title' => 'Permissions',
-		'created_at' => 'Time',
-		'fields' => [
-			'name' => 'Name',
-		],
-	],
-
 	'roles' => [
 		'title' => 'Roles',
 		'created_at' => 'Time',
@@ -43,6 +35,21 @@ return [
         'new_password' => 'New password*',
         'new_password_confirmation' => 'New password confirmation*',
         'success_message' => '',
+    ],
+    'permissions' => [
+        'title' => 'Permissions',
+		'created_at' => 'Time',
+		'fields' => [
+			'name' => 'Name',
+        ],
+
+        /* For permissions */
+        'manage users' => 'Manage users',
+        'manage administrators' => 'Manage administrators',
+        'create datas' => 'Create datas',
+        'display datas' => 'Display datas',
+        'edit datas' => 'Edit datas',
+        'delete datas' => 'Delete datas',
     ],
 	'app_create' => 'Create',
 	'app_save' => 'Save',

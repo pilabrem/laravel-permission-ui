@@ -20,7 +20,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        if (! Gate::allows('gerer utilisateurs')) {
+        if (! Gate::allows('manage users')) {
             return abort(401);
         }
 
@@ -36,11 +36,11 @@ class UsersController extends Controller
      */
     public function create()
     {
-        if (! Gate::allows('gerer utilisateurs')) {
+        if (! Gate::allows('manage users')) {
             return abort(401);
         }
 
-        if (Gate::allows('gerer administrateurs')) {
+        if (Gate::allows('manage administrators')) {
             $roles = Role::get()->pluck('name', 'name');
         } else {
             $roles = Role::where('name', '<>', 'super-admin')->get()->pluck('name', 'name');
@@ -57,7 +57,7 @@ class UsersController extends Controller
      */
     public function store(StoreUsersRequest $request)
     {
-        if (! Gate::allows('gerer utilisateurs')) {
+        if (! Gate::allows('manage users')) {
             return abort(401);
         }
         $user = User::create([
@@ -80,11 +80,11 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        if (! Gate::allows('gerer utilisateurs')) {
+        if (! Gate::allows('manage users')) {
             return abort(401);
         }
 
-        if (Gate::allows('gerer administrateurs')) {
+        if (Gate::allows('manage administrators')) {
             $roles = Role::get()->pluck('name', 'name');
         } else {
             $roles = Role::where('name', '<>', 'super-admin')->get()->pluck('name', 'name');
@@ -104,7 +104,7 @@ class UsersController extends Controller
      */
     public function update(UpdateUsersRequest $request, $id)
     {
-        if (! Gate::allows('gerer utilisateurs')) {
+        if (! Gate::allows('manage users')) {
             return abort(401);
         }
         $user = User::findOrFail($id);
@@ -131,7 +131,7 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        if (! Gate::allows('gerer utilisateurs')) {
+        if (! Gate::allows('manage users')) {
             return abort(401);
         }
         $user = User::findOrFail($id);
@@ -147,7 +147,7 @@ class UsersController extends Controller
      */
     public function massDestroy(Request $request)
     {
-        if (! Gate::allows('gerer utilisateurs')) {
+        if (! Gate::allows('manage users')) {
             return abort(401);
         }
         if ($request->input('ids')) {

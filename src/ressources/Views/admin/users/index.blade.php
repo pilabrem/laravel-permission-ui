@@ -30,7 +30,7 @@
                     @if (count($users) > 0)
                         @foreach ($users as $user)
                             @if($user->hasRole('super-admin'))
-                                @can('gerer administrateurs')
+                                @can('manage administrators')
                                     @include('admin.users.tr')
                                 @endcan
                             @else

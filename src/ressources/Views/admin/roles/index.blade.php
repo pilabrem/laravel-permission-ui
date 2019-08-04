@@ -27,7 +27,7 @@
                     @if (count($roles) > 0)
                         @foreach ($roles as $role)
                             @if($role->name == 'super-admin')
-                                @can('gerer administrateurs')
+                                @can('manage administrators')
                                     @include('admin.roles.tr')
                                 @endcan
                             @else

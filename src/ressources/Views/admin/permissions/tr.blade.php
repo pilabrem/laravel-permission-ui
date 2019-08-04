@@ -1,8 +1,8 @@
 <tr data-entry-id="{{ $permission->id }}">
     <td></td>
-    <td>{{ $permission->name }}</td>
+    <td>@lang($permission->name)</td>
     <td>
-        @can('gerer administrateurs')
+        @can('manage administrators')
         <a href="{{ route('admin.permissions.edit',[$permission->id]) }}" class="btn btn-xs btn-info">@lang('global.app_edit')</a>
         {!! Form::open(array(
             'style' => 'display: inline-block;',

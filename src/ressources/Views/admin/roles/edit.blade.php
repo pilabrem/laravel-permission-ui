@@ -2,7 +2,7 @@
 
 @section('content')
     <h3 class="page-title">@lang('global.roles.title')</h3>
-    
+
     {!! Form::model($role, ['method' => 'PUT', 'route' => ['admin.roles.update', $role->id]]) !!}
 
     <div class="panel panel-default">
@@ -35,7 +35,7 @@
                     @endif
                 </div>
             </div>
-            
+
         </div>
     </div>
 

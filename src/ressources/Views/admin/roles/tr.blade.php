@@ -3,7 +3,7 @@
     <td>{{ $role->name }}</td>
     <td>
         @foreach ($role->permissions()->pluck('name') as $permission)
-            <span class="label label-info label-many">{{ $permission }}</span>
+            <span class="label label-info label-many">@lang($permission)</span>
         @endforeach
     </td>
     <td>
